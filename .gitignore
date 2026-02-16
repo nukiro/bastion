@@ -1,1 +1,4 @@
 .antigravity
+node_modules
+dist
+website/style.css
