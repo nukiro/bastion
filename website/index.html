@@ -872,7 +872,10 @@
                   value="Data Validation"
                   class="peer hidden"
                 />
-                <span class="...">Data validation</span>
+                <span
+                  class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-purple peer-checked:text-purple peer-checked:bg-purple/10 transition-colors"
+                  >Data validation</span
+                >
               </label>
               <label class="cursor-pointer">
                 <input
@@ -881,7 +884,10 @@
                   value="IoT / Edge"
                   class="peer hidden"
                 />
-                <span class="...">IoT / Edge</span>
+                <span
+                  class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-purple peer-checked:text-purple peer-checked:bg-purple/10 transition-colors"
+                  >IoT / Edge</span
+                >
               </label>
               <label class="cursor-pointer">
                 <input
@@ -890,7 +896,10 @@
                   value="Multi-region fan-out"
                   class="peer hidden"
                 />
-                <span class="...">Multi-region fan-out</span>
+                <span
+                  class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-purple peer-checked:text-purple peer-checked:bg-purple/10 transition-colors"
+                  >Multi-region fan-out</span
+                >
               </label>
               <label class="cursor-pointer">
                 <input
@@ -899,7 +908,10 @@
                   value="Data enrichment"
                   class="peer hidden"
                 />
-                <span class="...">Data enrichment</span>
+                <span
+                  class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-purple peer-checked:text-purple peer-checked:bg-purple/10 transition-colors"
+                  >Data enrichment</span
+                >
               </label>
             </div>
           </fieldset>
@@ -956,10 +968,18 @@
             mode: "no-cors",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: params.toString(),
-          });
-
-          document.getElementById("waitlist-form").classList.add("hidden");
-          document.getElementById("success-message").classList.remove("hidden");
+          })
+            .then(() => {
+              document.getElementById("waitlist-form").classList.add("hidden");
+              document
+                .getElementById("success-message")
+                .classList.remove("hidden");
+            })
+            .catch(() => {
+              alert(
+                "Something went wrong. Please check your connection and try again.",
+              );
+            });
         });
     </script>
   </body>
