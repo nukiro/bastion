@@ -1,0 +1,61 @@
+# =============================================================================
+# GLOBAL SETTINGS
+# =============================================================================
+language: "en-US"
+tone_instructions: "Focus on severe bugs, security, and performance. Ignore style, formatting, and grammar. Auto-approve PRs with no critical issues immediately. No trivial comments. Be concise."
+
+# =============================================================================
+# REVIEWS
+# =============================================================================
+reviews:
+  profile: "chill"
+
+  request_changes_workflow: true
+
+  high_level_summary: false
+  high_level_summary_in_walkthrough: false
+  review_status: true
+  commit_status: true
+  fail_commit_status: true
+  collapse_walkthrough: true
+  changed_files_summary: false
+  sequence_diagrams: false
+  estimate_code_review_effort: true
+  assess_linked_issues: false
+  related_issues: false
+  related_prs: false
+  suggested_labels: false
+  suggested_reviewers: false
+  poem: false
+
+  # Configuration for auto review
+  auto_review:
+    enabled: true
+    drafts: false
+    ignore_title_keywords: ["WIP", "Draft"]
+    labels: ["!wip"]
+
+  tools:
+    languagetool:
+      enabled: false
+
+  path_filters:
+    - "!**/*.lock"
+    - "!**/.github/**"
+    - "!**/node_modules/**"
+    - "!**/.wrangler/**"
+    - "!**/dist/**"
+    - "!**/build/**"
+    - "!**/bin/**"
+    - "!**/out/**"
+    - "!**/__pycache__/**"
+    - "!**/.venv/**"
+    - "!**/venv/**"
+    - "!**/env/**"
+    - "!**/*.egg-info/**"
+    - "!**/.pytest_cache/**"
+    - "!**/.mypy_cache/**"
+    - "!**/.ruff_cache/**"
+    - "!**/.tox/**"
+    - "!**/htmlcov/**"
+    - "!**/target/**"
