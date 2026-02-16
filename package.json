@@ -1,0 +1,36 @@
+{
+  "name": "bastion",
+  "version": "0.1.0",
+  "description": "A lightweight, high-performance data ingestion gateway built in Rust. Validate, transform, and route your data before it touches your infrastructure.",
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nukiro/bastion.git"
+  },
+  "keywords": [
+    "rust",
+    "data-ingestion",
+    "data-gateway",
+    "data-pipeline",
+    "data-validation",
+    "data-quality",
+    "kafka",
+    "apache-arrow",
+    "parquet",
+    "etl",
+    "iot",
+    "edge-computing",
+    "open-source"
+  ],
+  "author": "Carlos Aguilar Miguel",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/nukiro/bastion/issues"
+  },
+  "homepage": "https://getbastion.dev",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
+}

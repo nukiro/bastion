@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+body {
+  font-family: "Inter", sans-serif;
+}
+code,
+.font-mono {
+  font-family: "JetBrains Mono", monospace;
+}
+.gradient-text {
+  background: linear-gradient(135deg, #00d4ff 0%, #2d5bff 50%, #8a2be2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.gradient-border {
+  border-image: linear-gradient(135deg, #00d4ff, #8a2be2) 1;
+}
+.glow {
+  box-shadow:
+    0 0 80px rgba(0, 212, 255, 0.1),
+    0 0 40px rgba(138, 43, 226, 0.08);
+}
+.btn-gradient {
+  background: linear-gradient(135deg, #00d4ff 0%, #2d5bff 50%, #8a2be2 100%);
+}
+.btn-gradient:hover {
+  background: linear-gradient(135deg, #33ddff 0%, #4a6fff 50%, #9d44ee 100%);
+}
+.gradient-text {
+  background: linear-gradient(135deg, #00d4ff 0%, #2d5bff 50%, #8a2be2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  padding-bottom: 0.1em;
+  display: inline-block;
+}
