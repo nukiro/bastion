@@ -1,42 +1,56 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Primary SEO -->
-    <title>Bastion — The Smart Data Gateway | Validate, Transform & Route Your Data</title>
-    <meta name="description" content="Bastion is a lightweight, high-performance data ingestion gateway built in Rust. Validate, transform, and route your data before it touches your infrastructure. Edge-native, single binary under 20MB.">
-    <meta name="keywords" content="data gateway, data ingestion, data validation, Rust, ETL alternative, Kafka, edge computing, IoT, data pipeline, open source">
-    <link rel="canonical" href="https://getbastion.dev/">
+    <title>
+      Bastion — The Smart Data Gateway | Validate, Transform & Route Your Data
+    </title>
+    <meta
+      name="description"
+      content="Bastion is a lightweight, high-performance data ingestion gateway built in Rust. Validate, transform, and route your data before it touches your infrastructure. Edge-native, single binary under 20MB."
+    />
+    <meta
+      name="keywords"
+      content="data gateway, data ingestion, data validation, Rust, ETL alternative, Kafka, edge computing, IoT, data pipeline, open source"
+    />
+    <link rel="canonical" href="https://getbastion.dev/" />
 
     <!-- Open Graph (Facebook, LinkedIn, Slack previews) -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://getbastion.dev/">
-    <meta property="og:title" content="Bastion — The Smart Data Gateway">
-    <meta property="og:description" content="A lightweight, high-performance data ingestion gateway built in Rust. Validate, transform, and route your data before it touches your infrastructure.">
-    <meta property="og:image" content="https://getbastion.dev/og-image.png">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <meta property="og:site_name" content="Bastion">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://getbastion.dev/" />
+    <meta property="og:title" content="Bastion — The Smart Data Gateway" />
+    <meta
+      property="og:description"
+      content="A lightweight, high-performance data ingestion gateway built in Rust. Validate, transform, and route your data before it touches your infrastructure."
+    />
+    <meta property="og:image" content="https://getbastion.dev/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Bastion" />
 
     <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Bastion — The Smart Data Gateway">
-    <meta name="twitter:description" content="A lightweight, high-performance data ingestion gateway built in Rust. Edge-native, single binary under 20MB.">
-    <meta name="twitter:image" content="https://getbastion.dev/og-image.png">
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Bastion — The Smart Data Gateway" />
+    <meta
+      name="twitter:description"
+      content="A lightweight, high-performance data ingestion gateway built in Rust. Edge-native, single binary under 20MB."
+    />
+    <meta name="twitter:image" content="https://getbastion.dev/og-image.png" />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <!-- Theme color (mobile browser bar) -->
-    <meta name="theme-color" content="#0B101E">
+    <meta name="theme-color" content="#0B101E" />
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
-    {
+      {
         "@context": "https://schema.org",
         "@type": "SoftwareApplication",
         "name": "Bastion",
@@ -46,429 +60,990 @@
         "url": "https://getbastion.dev",
         "license": "https://www.apache.org/licenses/LICENSE-2.0",
         "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "USD"
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
         }
-    }
+      }
     </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        abyss:      '#0B101E',
-                        navy:       '#16203A',
-                        slate:      '#2A3655',
-                        cyan:       '#00D4FF',
-                        purple:     '#8A2BE2',
-                        electric:   '#2D5BFF',
-                        gold:       '#00FF9D',
-                        drop:       '#FF3366',
-                        quarantine: '#FFBE0B',
-                        clean:      '#F0F4F8',
-                        muted:      '#94A3B8',
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              abyss: "#0B101E",
+              navy: "#16203A",
+              slate: "#2A3655",
+              cyan: "#00D4FF",
+              purple: "#8A2BE2",
+              electric: "#2D5BFF",
+              gold: "#00FF9D",
+              drop: "#FF3366",
+              quarantine: "#FFBE0B",
+              clean: "#F0F4F8",
+              muted: "#94A3B8",
+            },
+          },
+        },
+      };
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
-        body { font-family: 'Inter', sans-serif; }
-        code, .font-mono { font-family: 'JetBrains Mono', monospace; }
-        .gradient-text {
-            background: linear-gradient(135deg, #00D4FF 0%, #2D5BFF 50%, #8A2BE2 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .gradient-border {
-            border-image: linear-gradient(135deg, #00D4FF, #8A2BE2) 1;
-        }
-        .glow { box-shadow: 0 0 80px rgba(0, 212, 255, 0.1), 0 0 40px rgba(138, 43, 226, 0.08); }
-        .btn-gradient {
-            background: linear-gradient(135deg, #00D4FF 0%, #2D5BFF 50%, #8A2BE2 100%);
-        }
-        .btn-gradient:hover {
-            background: linear-gradient(135deg, #33DDFF 0%, #4A6FFF 50%, #9D44EE 100%);
-        }
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap");
+      body {
+        font-family: "Inter", sans-serif;
+      }
+      code,
+      .font-mono {
+        font-family: "JetBrains Mono", monospace;
+      }
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          #00d4ff 0%,
+          #2d5bff 50%,
+          #8a2be2 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+      .gradient-border {
+        border-image: linear-gradient(135deg, #00d4ff, #8a2be2) 1;
+      }
+      .glow {
+        box-shadow:
+          0 0 80px rgba(0, 212, 255, 0.1),
+          0 0 40px rgba(138, 43, 226, 0.08);
+      }
+      .btn-gradient {
+        background: linear-gradient(
+          135deg,
+          #00d4ff 0%,
+          #2d5bff 50%,
+          #8a2be2 100%
+        );
+      }
+      .btn-gradient:hover {
+        background: linear-gradient(
+          135deg,
+          #33ddff 0%,
+          #4a6fff 50%,
+          #9d44ee 100%
+        );
+      }
+      .gradient-text {
+        background: linear-gradient(
+          135deg,
+          #00d4ff 0%,
+          #2d5bff 50%,
+          #8a2be2 100%
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        padding-bottom: 0.1em;
+        display: inline-block;
+      }
     </style>
-</head>
-<body class="bg-abyss text-muted antialiased">
-
+  </head>
+  <body class="bg-abyss text-muted antialiased">
     <!-- Nav -->
-    <nav class="fixed top-0 w-full z-50 bg-abyss/80 backdrop-blur-md border-b border-slate/50">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <img src="logo.svg" alt="Bastion" class="w-8 h-8">
-                <span class="text-clean font-bold text-lg">Bastion</span>
-            </div>
-            <div class="hidden sm:flex items-center gap-8 text-sm">
-                <a href="#features" class="hover:text-clean transition-colors">Features</a>
-                <a href="#compare" class="hover:text-clean transition-colors">Compare</a>
-                <a href="#roadmap" class="hover:text-clean transition-colors">Roadmap</a>
-                <a href="#waitlist" class="btn-gradient text-abyss font-semibold px-4 py-2 rounded-lg transition-all">Join Waitlist</a>
-            </div>
+    <nav
+      class="fixed top-0 w-full z-50 bg-abyss/80 backdrop-blur-md border-b border-slate/50"
+    >
+      <div
+        class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center"
+      >
+        <div class="flex items-center gap-3">
+          <img src="logo.svg" alt="Bastion" class="w-8 h-8" />
+          <span class="text-clean font-bold text-lg">Bastion</span>
         </div>
+        <div class="hidden sm:flex items-center gap-8 text-sm">
+          <a href="#features" class="hover:text-clean transition-colors"
+            >Features</a
+          >
+          <a href="#compare" class="hover:text-clean transition-colors"
+            >Compare</a
+          >
+          <a href="#roadmap" class="hover:text-clean transition-colors"
+            >Roadmap</a
+          >
+          <a
+            href="#waitlist"
+            class="btn-gradient text-abyss font-semibold px-4 py-2 rounded-lg transition-all"
+            >Join Waitlist</a
+          >
+        </div>
+      </div>
     </nav>
 
     <!-- Hero -->
     <header class="min-h-screen flex items-center justify-center pt-20">
-        <div class="max-w-5xl mx-auto px-6 text-center">
-            <div class="inline-flex items-center gap-2 bg-cyan/5 border border-cyan/20 rounded-full px-4 py-1.5 text-sm text-cyan mb-8">
-                <span class="w-2 h-2 bg-cyan rounded-full animate-pulse"></span>
-                Open Source — Apache 2.0
-            </div>
-
-            <h1 class="text-5xl sm:text-7xl font-extrabold text-clean leading-tight mb-6">
-                Clean data in.<br>
-                <span class="gradient-text">Garbage stays out.</span>
-            </h1>
-
-            <p class="text-lg sm:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed">
-                Bastion is a lightweight, high-performance data ingestion gateway built in Rust.
-                Validate, transform, and route your data <em class="text-clean/80">before</em> it touches your infrastructure.
-                Deploy anywhere — from cloud to Raspberry Pi.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-                <a href="#waitlist" class="btn-gradient text-abyss px-8 py-3.5 rounded-lg font-semibold transition-all text-lg">
-                    Join the Waitlist
-                </a>
-                <a href="https://github.com/YOUR_REPO" target="_blank" class="bg-navy hover:bg-slate text-clean px-8 py-3.5 rounded-lg font-semibold transition-colors text-lg border border-slate">
-                    View on GitHub
-                </a>
-            </div>
-
-            <!-- Architecture Diagram -->
-            <div class="glow bg-navy border border-slate rounded-2xl p-6 sm:p-10 max-w-2xl mx-auto">
-                <pre class="text-sm sm:text-base text-left font-mono leading-relaxed"><span class="text-muted/60">// Your data, validated and routed at the gate</span>
-
-<span class="text-muted">[Sensors]</span>  <span class="text-cyan">─→</span>  <span class="text-clean font-bold">┌─────────┐</span>  <span class="text-cyan">─→</span>  <span class="text-muted">Kafka (us-east)</span>
-<span class="text-muted">[APIs]</span>     <span class="text-cyan">─→</span>  <span class="text-clean font-bold">│ Bastion │</span>  <span class="text-purple">─→</span>  <span class="text-muted">Kafka (eu-west)</span>
-<span class="text-muted">[Webhooks]</span> <span class="text-cyan">─→</span>  <span class="text-clean font-bold">└─────────┘</span>  <span class="text-purple">─→</span>  <span class="text-muted">S3 (archive)</span>
-                    <span class="text-cyan">validate</span> <span class="text-electric">→ transform</span> <span class="text-purple">→ route</span></pre>
-            </div>
+      <div
+        class="max-w-5xl mx-auto px-8 sm:px-6 text-center w-full overflow-hidden"
+      >
+        <div
+          class="inline-flex items-center gap-2 bg-cyan/5 border border-cyan/20 rounded-full px-4 py-1.5 text-sm text-cyan mb-8"
+        >
+          <span class="w-2 h-2 bg-cyan rounded-full animate-pulse"></span>
+          Open Source — Apache 2.0
         </div>
+
+        <h1
+          class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-clean leading-tight mb-6"
+        >
+          Clean data in.<br />
+          <span class="gradient-text">Garbage stays out.</span>
+        </h1>
+
+        <p
+          class="text-base sm:text-lg md:text-xl text-muted max-w-2xl mx-auto mb-10 leading-relaxed px-4"
+        >
+          Bastion is a lightweight, high-performance data ingestion gateway
+          built in Rust. Validate, transform, and route your data
+          <em class="text-clean/80">before</em> it touches your infrastructure.
+          Deploy anywhere — from cloud to Raspberry Pi.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 px-2">
+          <a
+            href="#waitlist"
+            class="btn-gradient text-abyss px-8 py-3.5 rounded-lg font-semibold transition-all text-base sm:text-lg"
+          >
+            Join the Waitlist
+          </a>
+          <!-- <a
+            href="https://github.com/nukiro/bastion"
+            target="_blank"
+            class="bg-navy hover:bg-slate text-clean px-8 py-3.5 rounded-lg font-semibold transition-colors text-base sm:text-lg border border-slate"
+          >
+            View on GitHub
+          </a> -->
+        </div>
+
+        <!-- Architecture Diagram -->
+        <div
+          class="glow bg-navy border border-slate rounded-2xl p-6 sm:p-10 max-w-2xl mx-auto mb-16"
+        >
+          <svg
+            viewBox="0 0 520 220"
+            xmlns="http://www.w3.org/2000/svg"
+            class="w-full"
+          >
+            <defs>
+              <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00D4FF" />
+                <stop offset="50%" stop-color="#2D5BFF" />
+                <stop offset="100%" stop-color="#8A2BE2" />
+              </linearGradient>
+              <linearGradient id="gradLine" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#00D4FF" />
+                <stop offset="100%" stop-color="#2D5BFF" />
+              </linearGradient>
+              <linearGradient id="gradLineOut" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0%" stop-color="#2D5BFF" />
+                <stop offset="100%" stop-color="#8A2BE2" />
+              </linearGradient>
+            </defs>
+
+            <!-- Source labels -->
+            <text
+              x="55"
+              y="42"
+              text-anchor="middle"
+              fill="#94A3B8"
+              font-family="JetBrains Mono, monospace"
+              font-size="13"
+            >
+              Sensors
+            </text>
+            <text
+              x="55"
+              y="112"
+              text-anchor="middle"
+              fill="#94A3B8"
+              font-family="JetBrains Mono, monospace"
+              font-size="13"
+            >
+              APIs
+            </text>
+            <text
+              x="55"
+              y="182"
+              text-anchor="middle"
+              fill="#94A3B8"
+              font-family="JetBrains Mono, monospace"
+              font-size="13"
+            >
+              Webhooks
+            </text>
+
+            <!-- Source dots -->
+            <circle cx="55" cy="52" r="4" fill="#00D4FF" />
+            <circle cx="55" cy="122" r="4" fill="#00D4FF" />
+            <circle cx="55" cy="192" r="4" fill="#00D4FF" />
+
+            <!-- Incoming lines -->
+            <line
+              x1="55"
+              y1="52"
+              x2="168"
+              y2="92"
+              stroke="url(#gradLine)"
+              stroke-width="1.5"
+              stroke-dasharray="4 3"
+              opacity="0.7"
+            />
+            <line
+              x1="55"
+              y1="122"
+              x2="168"
+              y2="112"
+              stroke="url(#gradLine)"
+              stroke-width="1.5"
+              stroke-dasharray="4 3"
+              opacity="0.7"
+            />
+            <line
+              x1="55"
+              y1="192"
+              x2="168"
+              y2="132"
+              stroke="url(#gradLine)"
+              stroke-width="1.5"
+              stroke-dasharray="4 3"
+              opacity="0.7"
+            />
+
+            <!-- Incoming arrows -->
+            <polygon
+              points="166,89 166,95 172,92"
+              fill="#2D5BFF"
+              opacity="0.9"
+            />
+            <polygon
+              points="166,109 166,115 172,112"
+              fill="#2D5BFF"
+              opacity="0.9"
+            />
+            <polygon
+              points="166,129 166,135 172,132"
+              fill="#2D5BFF"
+              opacity="0.9"
+            />
+
+            <!-- Bastion box (wider and taller) -->
+            <rect
+              x="170"
+              y="68"
+              width="180"
+              height="88"
+              rx="10"
+              fill="#16203A"
+              stroke="url(#grad)"
+              stroke-width="2"
+            />
+
+            <!-- Shield icon inside box -->
+            <path
+              d="M260,82 L246,89 V103 C246,110 253,117 260,119 C267,117 274,110 274,103 V89 Z"
+              fill="none"
+              stroke="url(#grad)"
+              stroke-width="1.5"
+              opacity="0.25"
+            />
+
+            <!-- Bastion text -->
+            <text
+              x="260"
+              y="110"
+              text-anchor="middle"
+              fill="#F0F4F8"
+              font-family="Inter, sans-serif"
+              font-weight="700"
+              font-size="18"
+            >
+              Bastion
+            </text>
+
+            <!-- Pipeline labels centered -->
+            <text
+              x="260"
+              y="142"
+              text-anchor="middle"
+              font-family="JetBrains Mono, monospace"
+              font-size="9"
+            >
+              <tspan fill="#00D4FF">validate</tspan>
+              <tspan fill="#2D5BFF">→ transform</tspan>
+              <tspan fill="#8A2BE2">→ route</tspan>
+            </text>
+
+            <!-- Outgoing lines (3 lines) -->
+            <line
+              x1="350"
+              y1="92"
+              x2="410"
+              y2="48"
+              stroke="url(#gradLineOut)"
+              stroke-width="1.5"
+              stroke-dasharray="4 3"
+              opacity="0.7"
+            />
+            <line
+              x1="350"
+              y1="112"
+              x2="410"
+              y2="118"
+              stroke="url(#gradLineOut)"
+              stroke-width="1.5"
+              stroke-dasharray="4 3"
+              opacity="0.7"
+            />
+            <line
+              x1="350"
+              y1="132"
+              x2="410"
+              y2="188"
+              stroke="url(#gradLineOut)"
+              stroke-width="1.5"
+              stroke-dasharray="4 3"
+              opacity="0.7"
+            />
+
+            <!-- Outgoing arrows -->
+            <polygon
+              points="408,45 408,51 414,48"
+              fill="#8A2BE2"
+              opacity="0.9"
+            />
+            <polygon
+              points="408,115 408,121 414,118"
+              fill="#8A2BE2"
+              opacity="0.9"
+            />
+            <polygon
+              points="408,185 408,191 414,188"
+              fill="#8A2BE2"
+              opacity="0.9"
+            />
+
+            <!-- Destination dots -->
+            <circle cx="415" cy="48" r="4" fill="#8A2BE2" />
+            <circle cx="415" cy="118" r="4" fill="#8A2BE2" />
+            <circle cx="415" cy="188" r="4" fill="#8A2BE2" />
+
+            <!-- Destination labels -->
+            <text
+              x="426"
+              y="43"
+              fill="#94A3B8"
+              font-family="JetBrains Mono, monospace"
+              font-size="12"
+            >
+              Kafka
+            </text>
+            <text
+              x="426"
+              y="56"
+              fill="#94A3B8"
+              font-family="JetBrains Mono, monospace"
+              font-size="9"
+              opacity="0.6"
+            >
+              (us-east)
+            </text>
+
+            <text
+              x="426"
+              y="113"
+              fill="#94A3B8"
+              font-family="JetBrains Mono, monospace"
+              font-size="12"
+            >
+              Kafka
+            </text>
+            <text
+              x="426"
+              y="126"
+              fill="#94A3B8"
+              font-family="JetBrains Mono, monospace"
+              font-size="9"
+              opacity="0.6"
+            >
+              (eu-west)
+            </text>
+
+            <text
+              x="426"
+              y="183"
+              fill="#94A3B8"
+              font-family="JetBrains Mono, monospace"
+              font-size="12"
+            >
+              S3
+            </text>
+            <text
+              x="426"
+              y="196"
+              fill="#94A3B8"
+              font-family="JetBrains Mono, monospace"
+              font-size="9"
+              opacity="0.6"
+            >
+              (archive)
+            </text>
+          </svg>
+        </div>
+      </div>
     </header>
 
     <!-- Features -->
     <section id="features" class="py-24">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-3xl sm:text-4xl font-bold text-clean text-center mb-4">Why Bastion?</h2>
-            <p class="text-muted text-center max-w-2xl mx-auto mb-16">
-                Getting data into your data lake shouldn't require a PhD in distributed systems.
-            </p>
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl sm:text-4xl font-bold text-clean text-center mb-4">
+          Why Bastion?
+        </h2>
+        <p class="text-muted text-center max-w-2xl mx-auto mb-16">
+          Getting data into your data lake shouldn't require a PhD in
+          distributed systems.
+        </p>
 
-            <div class="grid sm:grid-cols-2 gap-6">
-                <!-- Feature 1 -->
-                <div class="bg-navy/50 border border-slate rounded-xl p-6 hover:border-cyan/30 transition-colors">
-                    <div class="w-10 h-10 bg-cyan/10 rounded-lg flex items-center justify-center mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-clean font-semibold text-lg mb-2">Validate at the Gate</h3>
-                    <p class="text-muted text-sm leading-relaxed">
-                        Real-time schema validation before data enters your pipeline. No more 3 AM surprises from malformed payloads or silent schema changes.
-                    </p>
-                </div>
-
-                <!-- Feature 2 -->
-                <div class="bg-navy/50 border border-slate rounded-xl p-6 hover:border-cyan/30 transition-colors">
-                    <div class="w-10 h-10 bg-cyan/10 rounded-lg flex items-center justify-center mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-cyan" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-clean font-semibold text-lg mb-2">Edge-Native</h3>
-                    <p class="text-muted text-sm leading-relaxed">
-                        A single binary under 20 MB. No JVM, no runtime dependencies, no GC pauses. Runs on a Raspberry Pi or a cloud VM. Built in Rust for when every millisecond matters.
-                    </p>
-                </div>
-
-                <!-- Feature 3 -->
-                <div class="bg-navy/50 border border-slate rounded-xl p-6 hover:border-purple/30 transition-colors">
-                    <div class="w-10 h-10 bg-purple/10 rounded-lg flex items-center justify-center mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                        </svg>
-                    </div>
-                    <h3 class="text-clean font-semibold text-lg mb-2">Native Fan-Out</h3>
-                    <p class="text-muted text-sm leading-relaxed">
-                        Publish to multiple destinations in a single pass — Kafka clusters, S3, webhooks. No MirrorMaker. No cross-cluster replication. Data goes where it needs to from the start.
-                    </p>
-                </div>
-
-                <!-- Feature 4 -->
-                <div class="bg-navy/50 border border-slate rounded-xl p-6 hover:border-purple/30 transition-colors">
-                    <div class="w-10 h-10 bg-purple/10 rounded-lg flex items-center justify-center mb-4">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-purple" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
-                        </svg>
-                    </div>
-                    <h3 class="text-clean font-semibold text-lg mb-2">Bronze → Silver → Gold</h3>
-                    <p class="text-muted text-sm leading-relaxed">
-                        Built-in data pipeline architecture. Raw data is validated (Bronze), cleaned and transformed (Silver), and enriched with business logic (Gold) — all before storage.
-                    </p>
-                </div>
+        <div class="grid sm:grid-cols-2 gap-6">
+          <!-- Feature 1 -->
+          <div
+            class="bg-navy/50 border border-slate rounded-xl p-6 hover:border-cyan/30 transition-colors"
+          >
+            <div
+              class="w-10 h-10 bg-cyan/10 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 text-cyan"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+                />
+              </svg>
             </div>
+            <h3 class="text-clean font-semibold text-lg mb-2">
+              Validate at the Gate
+            </h3>
+            <p class="text-muted text-sm leading-relaxed">
+              Real-time schema validation before data enters your pipeline. No
+              more 3 AM surprises from malformed payloads or silent schema
+              changes.
+            </p>
+          </div>
+
+          <!-- Feature 2 -->
+          <div
+            class="bg-navy/50 border border-slate rounded-xl p-6 hover:border-cyan/30 transition-colors"
+          >
+            <div
+              class="w-10 h-10 bg-cyan/10 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 text-cyan"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M13 10V3L4 14h7v7l9-11h-7z"
+                />
+              </svg>
+            </div>
+            <h3 class="text-clean font-semibold text-lg mb-2">Edge-Native</h3>
+            <p class="text-muted text-sm leading-relaxed">
+              A single binary under 20 MB. No JVM, no runtime dependencies, no
+              GC pauses. Runs on a Raspberry Pi or a cloud VM. Built in Rust for
+              when every millisecond matters.
+            </p>
+          </div>
+
+          <!-- Feature 3 -->
+          <div
+            class="bg-navy/50 border border-slate rounded-xl p-6 hover:border-purple/30 transition-colors"
+          >
+            <div
+              class="w-10 h-10 bg-purple/10 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 text-purple"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
+                />
+              </svg>
+            </div>
+            <h3 class="text-clean font-semibold text-lg mb-2">
+              Native Fan-Out
+            </h3>
+            <p class="text-muted text-sm leading-relaxed">
+              Publish to multiple destinations in a single pass — Kafka
+              clusters, S3, webhooks. No MirrorMaker. No cross-cluster
+              replication. Data goes where it needs to from the start.
+            </p>
+          </div>
+
+          <!-- Feature 4 -->
+          <div
+            class="bg-navy/50 border border-slate rounded-xl p-6 hover:border-purple/30 transition-colors"
+          >
+            <div
+              class="w-10 h-10 bg-purple/10 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 text-purple"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
+                />
+              </svg>
+            </div>
+            <h3 class="text-clean font-semibold text-lg mb-2">
+              Bronze → Silver → Gold
+            </h3>
+            <p class="text-muted text-sm leading-relaxed">
+              Built-in data pipeline architecture. Raw data is validated
+              (Bronze), cleaned and transformed (Silver), and enriched with
+              business logic (Gold) — all before storage.
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Comparison -->
     <section id="compare" class="py-24 bg-navy/30">
-        <div class="max-w-5xl mx-auto px-6">
-            <h2 class="text-3xl sm:text-4xl font-bold text-clean text-center mb-4">How Bastion Compares</h2>
-            <p class="text-muted text-center max-w-2xl mx-auto mb-12">
-                Bastion isn't a replacement for Kafka. It's the layer that sits <em class="text-clean/80">in front</em>, ensuring your data is clean and properly routed.
-            </p>
+      <div class="max-w-5xl mx-auto px-6">
+        <h2 class="text-3xl sm:text-4xl font-bold text-clean text-center mb-4">
+          How Bastion Compares
+        </h2>
+        <p class="text-muted text-center max-w-2xl mx-auto mb-12">
+          Bastion isn't a replacement for Kafka. It's the layer that sits
+          <em class="text-clean/80">in front</em>, ensuring your data is clean
+          and properly routed.
+        </p>
 
-            <div class="overflow-x-auto">
-                <table class="w-full text-sm">
-                    <thead>
-                        <tr class="border-b border-slate">
-                            <th class="text-left py-4 px-4 text-muted font-medium"></th>
-                            <th class="text-center py-4 px-4 font-semibold">
-                                <span class="gradient-text">Bastion</span>
-                            </th>
-                            <th class="text-center py-4 px-4 text-muted font-medium">REST Proxy</th>
-                            <th class="text-center py-4 px-4 text-muted font-medium">Kafka Connect</th>
-                            <th class="text-center py-4 px-4 text-muted font-medium">Custom</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="border-b border-slate/50">
-                            <td class="py-4 px-4 text-clean/80">Memory footprint</td>
-                            <td class="py-4 px-4 text-center text-clean font-medium">~20 MB</td>
-                            <td class="py-4 px-4 text-center">512 MB+ (JVM)</td>
-                            <td class="py-4 px-4 text-center">512 MB+ (JVM)</td>
-                            <td class="py-4 px-4 text-center">Varies</td>
-                        </tr>
-                        <tr class="border-b border-slate/50">
-                            <td class="py-4 px-4 text-clean/80">Schema validation</td>
-                            <td class="py-4 px-4 text-center text-cyan">Built-in</td>
-                            <td class="py-4 px-4 text-center">Separate service</td>
-                            <td class="py-4 px-4 text-center">Limited</td>
-                            <td class="py-4 px-4 text-center">Manual</td>
-                        </tr>
-                        <tr class="border-b border-slate/50">
-                            <td class="py-4 px-4 text-clean/80">Data transformation</td>
-                            <td class="py-4 px-4 text-center">
-                                <span class="text-cyan">Bronze</span>
-                                <span class="text-electric">→ Silver</span>
-                                <span class="text-purple">→ Gold</span>
-                            </td>
-                            <td class="py-4 px-4 text-center">None</td>
-                            <td class="py-4 px-4 text-center">SMTs (limited)</td>
-                            <td class="py-4 px-4 text-center">Manual</td>
-                        </tr>
-                        <tr class="border-b border-slate/50">
-                            <td class="py-4 px-4 text-clean/80">Multi-destination fan-out</td>
-                            <td class="py-4 px-4 text-center text-cyan">Native</td>
-                            <td class="py-4 px-4 text-center">Single cluster</td>
-                            <td class="py-4 px-4 text-center">Single cluster</td>
-                            <td class="py-4 px-4 text-center">Manual</td>
-                        </tr>
-                        <tr class="border-b border-slate/50">
-                            <td class="py-4 px-4 text-clean/80">Edge deployable</td>
-                            <td class="py-4 px-4 text-center"><span class="text-gold">✓</span></td>
-                            <td class="py-4 px-4 text-center"><span class="text-drop">✗</span></td>
-                            <td class="py-4 px-4 text-center"><span class="text-drop">✗</span></td>
-                            <td class="py-4 px-4 text-center">Depends</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 px-4 text-clean/80">Deployment</td>
-                            <td class="py-4 px-4 text-center text-clean font-medium">Single binary</td>
-                            <td class="py-4 px-4 text-center">JVM + Schema Registry</td>
-                            <td class="py-4 px-4 text-center">JVM + Kafka cluster</td>
-                            <td class="py-4 px-4 text-center">Varies</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="border-b border-slate">
+                <th class="text-left py-4 px-4 text-muted font-medium"></th>
+                <th class="text-center py-4 px-4 font-semibold">
+                  <span class="gradient-text">Bastion</span>
+                </th>
+                <th class="text-center py-4 px-4 text-muted font-medium">
+                  REST Proxy
+                </th>
+                <th class="text-center py-4 px-4 text-muted font-medium">
+                  Kafka Connect
+                </th>
+                <th class="text-center py-4 px-4 text-muted font-medium">
+                  Custom
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-slate/50">
+                <td class="py-4 px-4 text-clean/80">Memory footprint</td>
+                <td class="py-4 px-4 text-center text-clean font-medium">
+                  ~20 MB
+                </td>
+                <td class="py-4 px-4 text-center">512 MB+ (JVM)</td>
+                <td class="py-4 px-4 text-center">512 MB+ (JVM)</td>
+                <td class="py-4 px-4 text-center">Varies</td>
+              </tr>
+              <tr class="border-b border-slate/50">
+                <td class="py-4 px-4 text-clean/80">Schema validation</td>
+                <td class="py-4 px-4 text-center text-cyan">Built-in</td>
+                <td class="py-4 px-4 text-center">Separate service</td>
+                <td class="py-4 px-4 text-center">Limited</td>
+                <td class="py-4 px-4 text-center">Manual</td>
+              </tr>
+              <tr class="border-b border-slate/50">
+                <td class="py-4 px-4 text-clean/80">Data transformation</td>
+                <td class="py-4 px-4 text-center">
+                  <span class="text-cyan">Bronze</span>
+                  <span class="text-electric">→ Silver</span>
+                  <span class="text-purple">→ Gold</span>
+                </td>
+                <td class="py-4 px-4 text-center">None</td>
+                <td class="py-4 px-4 text-center">SMTs (limited)</td>
+                <td class="py-4 px-4 text-center">Manual</td>
+              </tr>
+              <tr class="border-b border-slate/50">
+                <td class="py-4 px-4 text-clean/80">
+                  Multi-destination fan-out
+                </td>
+                <td class="py-4 px-4 text-center text-cyan">Native</td>
+                <td class="py-4 px-4 text-center">Single cluster</td>
+                <td class="py-4 px-4 text-center">Single cluster</td>
+                <td class="py-4 px-4 text-center">Manual</td>
+              </tr>
+              <tr class="border-b border-slate/50">
+                <td class="py-4 px-4 text-clean/80">Edge deployable</td>
+                <td class="py-4 px-4 text-center">
+                  <span class="text-gold">✓</span>
+                </td>
+                <td class="py-4 px-4 text-center">
+                  <span class="text-drop">✗</span>
+                </td>
+                <td class="py-4 px-4 text-center">
+                  <span class="text-drop">✗</span>
+                </td>
+                <td class="py-4 px-4 text-center">Depends</td>
+              </tr>
+              <tr>
+                <td class="py-4 px-4 text-clean/80">Deployment</td>
+                <td class="py-4 px-4 text-center text-clean font-medium">
+                  Single binary
+                </td>
+                <td class="py-4 px-4 text-center">JVM + Schema Registry</td>
+                <td class="py-4 px-4 text-center">JVM + Kafka cluster</td>
+                <td class="py-4 px-4 text-center">Varies</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
+      </div>
     </section>
 
     <!-- Roadmap -->
     <section id="roadmap" class="py-24">
-        <div class="max-w-3xl mx-auto px-6">
-            <h2 class="text-3xl sm:text-4xl font-bold text-clean text-center mb-4">Roadmap</h2>
-            <p class="text-muted text-center mb-12">Where we are and where we're heading.</p>
+      <div class="max-w-3xl mx-auto px-6">
+        <h2 class="text-3xl sm:text-4xl font-bold text-clean text-center mb-4">
+          Roadmap
+        </h2>
+        <p class="text-muted text-center mb-12">
+          Where we are and where we're heading.
+        </p>
 
-            <div class="space-y-4">
-                <!-- Done items -->
-                <div class="flex items-start gap-4 bg-gold/5 border border-gold/20 rounded-xl p-5">
-                    <div class="w-6 h-6 mt-0.5 bg-gold rounded-full flex items-center justify-center flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-abyss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-clean font-semibold">Schema Management Dashboard</h3>
-                        <p class="text-muted text-sm mt-1">Django-based dashboard for CRUD operations, schema versioning, authentication, and datasource management.</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start gap-4 bg-gold/5 border border-gold/20 rounded-xl p-5">
-                    <div class="w-6 h-6 mt-0.5 bg-gold rounded-full flex items-center justify-center flex-shrink-0">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-abyss" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="3">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-clean font-semibold">REST API & OpenAPI Documentation</h3>
-                        <p class="text-muted text-sm mt-1">Full REST API with auto-generated OpenAPI specs via drf-spectacular.</p>
-                    </div>
-                </div>
-
-                <!-- In Progress -->
-                <div class="flex items-start gap-4 bg-cyan/5 border border-cyan/20 rounded-xl p-5">
-                    <div class="w-6 h-6 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-cyan to-purple">
-                        <div class="w-2 h-2 bg-clean rounded-full animate-pulse"></div>
-                    </div>
-                    <div>
-                        <h3 class="text-clean font-semibold">Rust Ingestion Core</h3>
-                        <p class="text-muted text-sm mt-1">High-performance HTTP server, real-time validation, Bronze → Silver pipeline, and micro-batching engine.</p>
-                    </div>
-                </div>
-
-                <!-- Planned -->
-                <div class="flex items-start gap-4 bg-navy/50 border border-slate rounded-xl p-5">
-                    <div class="w-6 h-6 mt-0.5 bg-slate rounded-full flex items-center justify-center flex-shrink-0">
-                        <div class="w-2 h-2 bg-muted rounded-full"></div>
-                    </div>
-                    <div>
-                        <h3 class="text-clean font-semibold">Multi-Destination Fan-Out</h3>
-                        <p class="text-muted text-sm mt-1">Native routing to Kafka, S3, webhooks, and custom destinations from a single ingestion point.</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start gap-4 bg-navy/50 border border-slate rounded-xl p-5">
-                    <div class="w-6 h-6 mt-0.5 bg-slate rounded-full flex items-center justify-center flex-shrink-0">
-                        <div class="w-2 h-2 bg-muted rounded-full"></div>
-                    </div>
-                    <div>
-                        <h3 class="text-clean font-semibold">Edge Buffering & Store-and-Forward</h3>
-                        <p class="text-muted text-sm mt-1">Local buffering when downstream is unavailable. Zero data loss, automatic catch-up on reconnect.</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start gap-4 bg-navy/50 border border-slate rounded-xl p-5">
-                    <div class="w-6 h-6 mt-0.5 bg-slate rounded-full flex items-center justify-center flex-shrink-0">
-                        <div class="w-2 h-2 bg-muted rounded-full"></div>
-                    </div>
-                    <div>
-                        <h3 class="text-clean font-semibold">Python Worker Enrichment (Silver → Gold)</h3>
-                        <p class="text-muted text-sm mt-1">Pluggable Python workers for data enrichment — joins, API calls, ML inference — communicating via Apache Arrow IPC.</p>
-                    </div>
-                </div>
-
-                <div class="flex items-start gap-4 bg-navy/50 border border-slate rounded-xl p-5">
-                    <div class="w-6 h-6 mt-0.5 bg-slate rounded-full flex items-center justify-center flex-shrink-0">
-                        <div class="w-2 h-2 bg-muted rounded-full"></div>
-                    </div>
-                    <div>
-                        <h3 class="text-clean font-semibold">Observability & Circuit Breakers</h3>
-                        <p class="text-muted text-sm mt-1">Prometheus metrics, structured logging, distributed tracing, and automatic circuit breaking for downstream failures.</p>
-                    </div>
-                </div>
+        <div class="space-y-4">
+          <!-- Done items -->
+          <div
+            class="flex items-start gap-4 bg-gold/5 border border-gold/20 rounded-xl p-5"
+          >
+            <div
+              class="w-6 h-6 mt-0.5 bg-gold rounded-full flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 text-abyss"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="3"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
             </div>
+            <div>
+              <h3 class="text-clean font-semibold">
+                Schema Management Dashboard
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Django-based dashboard for CRUD operations, schema versioning,
+                authentication, and datasource management.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex items-start gap-4 bg-gold/5 border border-gold/20 rounded-xl p-5"
+          >
+            <div
+              class="w-6 h-6 mt-0.5 bg-gold rounded-full flex items-center justify-center flex-shrink-0"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 text-abyss"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="3"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-clean font-semibold">
+                REST API & OpenAPI Documentation
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Full REST API with auto-generated OpenAPI specs via
+                drf-spectacular.
+              </p>
+            </div>
+          </div>
+
+          <!-- In Progress -->
+          <div
+            class="flex items-start gap-4 bg-cyan/5 border border-cyan/20 rounded-xl p-5"
+          >
+            <div
+              class="w-6 h-6 mt-0.5 rounded-full flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-cyan to-purple"
+            >
+              <div class="w-2 h-2 bg-clean rounded-full animate-pulse"></div>
+            </div>
+            <div>
+              <h3 class="text-clean font-semibold">Rust Ingestion Core</h3>
+              <p class="text-muted text-sm mt-1">
+                High-performance HTTP server, real-time validation, Bronze →
+                Silver pipeline, and micro-batching engine.
+              </p>
+            </div>
+          </div>
+
+          <!-- Planned -->
+          <div
+            class="flex items-start gap-4 bg-navy/50 border border-slate rounded-xl p-5"
+          >
+            <div
+              class="w-6 h-6 mt-0.5 bg-slate rounded-full flex items-center justify-center flex-shrink-0"
+            >
+              <div class="w-2 h-2 bg-muted rounded-full"></div>
+            </div>
+            <div>
+              <h3 class="text-clean font-semibold">
+                Multi-Destination Fan-Out
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Native routing to Kafka, S3, webhooks, and custom destinations
+                from a single ingestion point.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex items-start gap-4 bg-navy/50 border border-slate rounded-xl p-5"
+          >
+            <div
+              class="w-6 h-6 mt-0.5 bg-slate rounded-full flex items-center justify-center flex-shrink-0"
+            >
+              <div class="w-2 h-2 bg-muted rounded-full"></div>
+            </div>
+            <div>
+              <h3 class="text-clean font-semibold">
+                Edge Buffering & Store-and-Forward
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Local buffering when downstream is unavailable. Zero data loss,
+                automatic catch-up on reconnect.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex items-start gap-4 bg-navy/50 border border-slate rounded-xl p-5"
+          >
+            <div
+              class="w-6 h-6 mt-0.5 bg-slate rounded-full flex items-center justify-center flex-shrink-0"
+            >
+              <div class="w-2 h-2 bg-muted rounded-full"></div>
+            </div>
+            <div>
+              <h3 class="text-clean font-semibold">
+                Python Worker Enrichment (Silver → Gold)
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Pluggable Python workers for data enrichment — joins, API calls,
+                ML inference — communicating via Apache Arrow IPC.
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="flex items-start gap-4 bg-navy/50 border border-slate rounded-xl p-5"
+          >
+            <div
+              class="w-6 h-6 mt-0.5 bg-slate rounded-full flex items-center justify-center flex-shrink-0"
+            >
+              <div class="w-2 h-2 bg-muted rounded-full"></div>
+            </div>
+            <div>
+              <h3 class="text-clean font-semibold">
+                Observability & Circuit Breakers
+              </h3>
+              <p class="text-muted text-sm mt-1">
+                Prometheus metrics, structured logging, distributed tracing, and
+                automatic circuit breaking for downstream failures.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Waitlist -->
     <section id="waitlist" class="py-24 bg-navy/30">
-        <div class="max-w-xl mx-auto px-6 text-center">
-            <h2 class="text-3xl sm:text-4xl font-bold text-clean mb-4">Get Early Access</h2>
-            <p class="text-muted mb-8">
-                Be the first to know when Bastion is ready. No spam — just launch updates and early access.
-            </p>
+      <div class="max-w-xl mx-auto px-6 text-center">
+        <h2 class="text-3xl sm:text-4xl font-bold text-clean mb-4">
+          Get Early Access
+        </h2>
+        <p class="text-muted mb-8">
+          Be the first to know when Bastion is ready. No spam — just launch
+          updates and early access.
+        </p>
 
-            <form id="waitlist-form" class="space-y-4">
-                <div class="flex flex-col sm:flex-row gap-3">
-                    <input
-                        type="email"
-                        id="email"
-                        placeholder="you@company.com"
-                        required
-                        class="flex-1 bg-navy border border-slate rounded-lg px-4 py-3 text-clean placeholder-muted/50 focus:outline-none focus:border-cyan focus:ring-1 focus:ring-cyan transition-colors"
-                    >
-                    <button
-                        type="submit"
-                        class="btn-gradient text-abyss px-6 py-3 rounded-lg font-semibold transition-all whitespace-nowrap"
-                    >
-                        Join Waitlist
-                    </button>
-                </div>
+        <form id="waitlist-form" class="space-y-4">
+          <div class="flex flex-col sm:flex-row gap-3">
+            <input
+              type="email"
+              id="email"
+              placeholder="you@company.com"
+              required
+              class="flex-1 bg-navy border border-slate rounded-lg px-4 py-3 text-clean placeholder-muted/50 focus:outline-none focus:border-cyan focus:ring-1 focus:ring-cyan transition-colors"
+            />
+            <button
+              type="submit"
+              class="btn-gradient text-abyss px-6 py-3 rounded-lg font-semibold transition-all whitespace-nowrap"
+            >
+              Join Waitlist
+            </button>
+          </div>
 
-                <fieldset class="text-left">
-                    <legend class="text-muted text-sm mb-3">What interests you most? <span class="text-muted/50">(optional)</span></legend>
-                    <div class="flex flex-wrap gap-2">
-                        <label class="cursor-pointer">
-                            <input type="checkbox" name="interest" value="validation" class="peer hidden">
-                            <span class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-cyan peer-checked:text-cyan peer-checked:bg-cyan/10 transition-colors">
-                                Data validation
-                            </span>
-                        </label>
-                        <label class="cursor-pointer">
-                            <input type="checkbox" name="interest" value="iot" class="peer hidden">
-                            <span class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-cyan peer-checked:text-cyan peer-checked:bg-cyan/10 transition-colors">
-                                IoT / Edge
-                            </span>
-                        </label>
-                        <label class="cursor-pointer">
-                            <input type="checkbox" name="interest" value="fanout" class="peer hidden">
-                            <span class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-purple peer-checked:text-purple peer-checked:bg-purple/10 transition-colors">
-                                Multi-region fan-out
-                            </span>
-                        </label>
-                        <label class="cursor-pointer">
-                            <input type="checkbox" name="interest" value="enrichment" class="peer hidden">
-                            <span class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-purple peer-checked:text-purple peer-checked:bg-purple/10 transition-colors">
-                                Data enrichment
-                            </span>
-                        </label>
-                    </div>
-                </fieldset>
-            </form>
-
-            <div id="success-message" class="hidden mt-6 p-4 bg-gold/10 border border-gold/20 rounded-lg">
-                <p class="text-gold font-medium">You're on the list! We'll be in touch.</p>
+          <fieldset class="text-left">
+            <legend class="text-muted text-sm mb-3">
+              What interests you most?
+              <span class="text-muted/50">(optional)</span>
+            </legend>
+            <div class="flex flex-wrap gap-2">
+              <label class="cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="interest"
+                  value="validation"
+                  class="peer hidden"
+                />
+                <span
+                  class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-cyan peer-checked:text-cyan peer-checked:bg-cyan/10 transition-colors"
+                >
+                  Data validation
+                </span>
+              </label>
+              <label class="cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="interest"
+                  value="iot"
+                  class="peer hidden"
+                />
+                <span
+                  class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-cyan peer-checked:text-cyan peer-checked:bg-cyan/10 transition-colors"
+                >
+                  IoT / Edge
+                </span>
+              </label>
+              <label class="cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="interest"
+                  value="fanout"
+                  class="peer hidden"
+                />
+                <span
+                  class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-purple peer-checked:text-purple peer-checked:bg-purple/10 transition-colors"
+                >
+                  Multi-region fan-out
+                </span>
+              </label>
+              <label class="cursor-pointer">
+                <input
+                  type="checkbox"
+                  name="interest"
+                  value="enrichment"
+                  class="peer hidden"
+                />
+                <span
+                  class="inline-block px-3 py-1.5 rounded-full text-sm border border-slate text-muted peer-checked:border-purple peer-checked:text-purple peer-checked:bg-purple/10 transition-colors"
+                >
+                  Data enrichment
+                </span>
+              </label>
             </div>
+          </fieldset>
+        </form>
+
+        <div
+          id="success-message"
+          class="hidden mt-6 p-4 bg-gold/10 border border-gold/20 rounded-lg"
+        >
+          <p class="text-gold font-medium">
+            You're on the list! We'll be in touch.
+          </p>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="py-12 border-t border-slate/50">
-        <div class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <div class="flex items-center gap-3">
-                <img src="logo.svg" alt="Bastion" class="w-6 h-6">
-                <span class="text-muted text-sm">Bastion — Open Source, Apache 2.0</span>
-            </div>
-            <div class="flex gap-6">
-                <a href="https://github.com/nukiro/bastion" target="_blank" class="text-muted hover:text-clean transition-colors text-sm">GitHub</a>
-                <a href="https://github.com/nukiro/bastion" class="text-muted hover:text-clean transition-colors text-sm">Documentation</a>
-            </div>
+      <div
+        class="max-w-5xl mx-auto px-6 flex flex-col sm:flex-row justify-between items-center gap-4"
+      >
+        <div class="flex items-center gap-3">
+          <img src="logo.svg" alt="Bastion" class="w-6 h-6" />
+          <span class="text-muted text-sm"
+            >Bastion — Open Source, Apache 2.0</span
+          >
         </div>
+        <!-- <div class="flex gap-6"> -->
+        <!-- <a href="https://github.com/nukiro/bastion" target="_blank" class="text-muted hover:text-clean transition-colors text-sm">GitHub</a> -->
+        <!-- <a href="https://github.com/nukiro/bastion" class="text-muted hover:text-clean transition-colors text-sm">Documentation</a> -->
+        <!-- </div> -->
+      </div>
     </footer>
 
     <script>
-        document.getElementById('waitlist-form').addEventListener('submit', function(e) {
-            e.preventDefault();
+      document
+        .getElementById("waitlist-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
 
-            const email = document.getElementById('email').value;
-            const interests = [...document.querySelectorAll('input[name="interest"]:checked')]
-                .map(el => el.value);
+          const email = document.getElementById("email").value;
+          const interests = [
+            ...document.querySelectorAll('input[name="interest"]:checked'),
+          ].map((el) => el.value);
 
-            // TODO: Send to your backend (Buttondown, Loops, Google Forms, etc.)
-            console.log('Waitlist signup:', { email, interests });
+          // TODO: Send to your backend (Buttondown, Loops, Google Forms, etc.)
+          console.log("Waitlist signup:", { email, interests });
 
-            document.getElementById('waitlist-form').classList.add('hidden');
-            document.getElementById('success-message').classList.remove('hidden');
+          document.getElementById("waitlist-form").classList.add("hidden");
+          document.getElementById("success-message").classList.remove("hidden");
         });
     </script>
-
-</body>
+  </body>
 </html>
