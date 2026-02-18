@@ -1,0 +1,29 @@
+name: Notify PR Merged
+on:
+  pull_request:
+    types: [closed]
+    branches: [main]
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Notify Discord
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -X POST "$DISCORD_WEBHOOK" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "embeds": [{
+                "title": "🔀 PR Merged!",
+                "description": "'"${{ github.event.pull_request.title }}"'",
+                "color": 55551,
+                "url": "'"${{ github.event.pull_request.html_url }}"'",
+                "fields": [
+                  { "name": "PR", "value": "#'"${{ github.event.pull_request.number }}"'", "inline": true },
+                  { "name": "Author", "value": "'"${{ github.event.pull_request.user.login }}"'", "inline": true }
+                ],
+                "timestamp": "'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"
+              }]
+            }'

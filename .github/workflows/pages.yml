@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy landing page to GitHub Pages
 
 on:
   push:
@@ -26,3 +26,22 @@ jobs:
           path: website
       - id: deployment
         uses: actions/deploy-pages@v4
+      - name: Notify Discord
+        if: success()
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: |
+          curl -X POST "$DISCORD_WEBHOOK" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "embeds": [{
+                "title": "🚀 Website deployed!",
+                "description": "getbastion.dev has been updated.",
+                "color": 55551,
+                "fields": [
+                  { "name": "Commit", "value": "'"${{ github.event.head_commit.message }}"'", "inline": true },
+                  { "name": "Branch", "value": "'"${{ github.ref_name }}"'", "inline": true }
+                ],
+                "timestamp": "'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"
+              }]
+            }'
