@@ -949,7 +949,7 @@
     <script>
       document
         .getElementById("waitlist-form")
-        .addEventListener("submit", function (e) {
+        .addEventListener("submit", async function (e) {
           e.preventDefault();
 
           const email = document.getElementById("email").value;
@@ -957,29 +957,28 @@
             ...document.querySelectorAll('input[name="interest"]:checked'),
           ].map((el) => el.value);
 
-          const formUrl =
-            "https://docs.google.com/forms/d/e/18FHFLD9ZvjajPGyZVFHcfLaK9Ujx_iwUckFzQqCX9B4/formResponse";
-          const params = new URLSearchParams();
-          params.append("entry.1296355485", email);
-          interests.forEach((i) => params.append("entry.921088208", i));
+          const submitBtn = this.querySelector('button[type="submit"]');
+          submitBtn.textContent = "Sending...";
+          submitBtn.disabled = true;
 
-          fetch(formUrl, {
-            method: "POST",
-            mode: "no-cors",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: params.toString(),
-          })
-            .then(() => {
-              document.getElementById("waitlist-form").classList.add("hidden");
-              document
-                .getElementById("success-message")
-                .classList.remove("hidden");
-            })
-            .catch(() => {
-              alert(
-                "Something went wrong. Please check your connection and try again.",
-              );
-            });
+          try {
+            await fetch(
+              "https://script.google.com/macros/s/AKfycbzy18LiDiww0UaH-TeOa9XUNRrtI14tExy9mCQMhvLVTGeQnOFfI8MLoJiwhCDssp6_Sg/exec",
+              {
+                method: "POST",
+                body: JSON.stringify({ email, interests }),
+              },
+            );
+
+            document.getElementById("waitlist-form").classList.add("hidden");
+            document
+              .getElementById("success-message")
+              .classList.remove("hidden");
+          } catch (err) {
+            submitBtn.textContent = "Join Waitlist";
+            submitBtn.disabled = false;
+            alert("Something went wrong. Please try again.");
+          }
         });
     </script>
   </body>
