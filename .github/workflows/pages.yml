@@ -3,6 +3,9 @@ name: Deploy landing page to GitHub Pages
 on:
   push:
     branches: [main]
+    paths:
+      - "website/**"
+      - "tailwind.config.js"
 
 permissions:
   pages: write
