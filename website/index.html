@@ -124,7 +124,8 @@
           Bastion is a lightweight, high-performance data ingestion gateway
           built in Rust. Validate, transform, and route your data
           <em class="text-clean/80">before</em> it touches your infrastructure.
-          Deploy anywhere — from cloud to Raspberry Pi.
+          Send events to S3, Kafka, BigQuery, or any destination. Deploy
+          anywhere — from cloud to Raspberry Pi.
         </p>
 
         <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16 px-2">
@@ -373,7 +374,7 @@
               font-size="9"
               opacity="0.6"
             >
-              (us-east)
+              (any region)
             </text>
 
             <text
@@ -383,7 +384,7 @@
               font-family="JetBrains Mono, monospace"
               font-size="12"
             >
-              Kafka
+              DWH
             </text>
             <text
               x="426"
@@ -393,7 +394,7 @@
               font-size="9"
               opacity="0.6"
             >
-              (eu-west)
+              BQ, Redshift, ...
             </text>
 
             <text
@@ -403,7 +404,7 @@
               font-family="JetBrains Mono, monospace"
               font-size="12"
             >
-              S3
+              Cloud Storage
             </text>
             <text
               x="426"
@@ -557,6 +558,37 @@
               business logic (Gold) — all before storage.
             </p>
           </div>
+          <div
+            class="bg-navy/50 border border-slate rounded-xl p-6 hover:border-purple/30 transition-colors"
+          >
+            <div
+              class="w-10 h-10 bg-purple/10 rounded-lg flex items-center justify-center mb-4"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-5 h-5 text-purple"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
+                />
+              </svg>
+            </div>
+            <h3 class="text-clean font-semibold text-lg mb-2">
+              No Stack Required
+            </h3>
+            <p class="text-muted text-sm leading-relaxed">
+              Start ingesting on day one. Bastion writes clean Parquet files
+              directly to S3 or GCS — no Kafka, no data warehouse, no
+              infrastructure to provision first. Add destinations as your stack
+              grows.
+            </p>
+          </div>
         </div>
       </div>
     </section>
@@ -641,6 +673,13 @@
                   <span class="text-drop">✗</span>
                 </td>
                 <td class="py-4 px-4 text-center">Depends</td>
+              </tr>
+              <tr class="border-b border-slate/50">
+                <td class="py-4 px-4 text-clean/80">Requires Kafka</td>
+                <td class="text-gold text-center">No</td>
+                <td class="text-drop text-center">Yes</td>
+                <td class="text-drop text-center">Yes</td>
+                <td class="text-muted text-center">Depends</td>
               </tr>
               <tr>
                 <td class="py-4 px-4 text-clean/80">Deployment</td>
@@ -963,7 +1002,7 @@
 
           try {
             await fetch(
-              "https://script.google.com/macros/s/AKfycbzy18LiDiww0UaH-TeOa9XUNRrtI14tExy9mCQMhvLVTGeQnOFfI8MLoJiwhCDssp6_Sg/exec",
+              "https://script.google.com/macros/s/AKfycbxT8l_iaKBLjo7KDnOLRO3h1b7BrREqHzDTpyl_A_rIToBn-Z0oqAwWBS2UjfqJCmIFFw/exec",
               {
                 method: "POST",
                 body: JSON.stringify({ email, interests }),
