@@ -32,7 +32,9 @@ Traditional solutions address this after the fact. Bastion addresses it at the g
 
 ### No Infrastructure? No Problem.
 
-Bastion ships with S3/GCS output as a first-class citizen. Send your events in, get clean
+Bastion ships with S3/GCS output as a first-class citizen. No Spark jobs, no Glue pipelines,
+no scheduled transformations. Bastion writes Parquet natively at ingestion time — the conversion
+happens at the gate, not in a separate processing layer. Send your events in, get clean
 Parquet files out — ready for BigQuery, Athena, Snowflake, or dbt without configuring a
 single Kafka cluster.
 
@@ -51,16 +53,17 @@ to all of them natively. Your stack grows with you; your ingestion layer doesn't
 Bastion is not a replacement for Kafka or any streaming platform. It's the layer that
 sits **in front** of your infrastructure — or replaces the need to have it on day one.
 
-|                           | Bastion            | Confluent REST Proxy   | Kafka Connect       | Custom Solution |
-| ------------------------- | ------------------ | ---------------------- | ------------------- | --------------- |
-| Memory footprint          | ~20 MB             | 512 MB+ (JVM)          | 512 MB+ (JVM)       | Varies          |
-| Schema validation         | Built-in           | Schema Registry (sep.) | Limited             | Manual          |
-| Data transformation       | Bronze→Silver→Gold | None                   | SMTs (limited)      | Manual          |
-| Multi-destination fan-out | Native             | Single cluster         | Single cluster      | Manual          |
-| S3/GCS output             | Native             | ✗                      | Via connector       | Manual          |
-| Requires Kafka            | No                 | Yes                    | Yes                 | Depends         |
-| Edge deployable           | Yes                | No                     | No                  | Depends         |
-| Deployment                | Single binary      | JVM + Schema Registry  | JVM + Kafka cluster | Varies          |
+|                           | Bastion              | Confluent REST Proxy   | Kafka Connect       | Custom Solution |
+| ------------------------- | -------------------- | ---------------------- | ------------------- | --------------- |
+| Memory footprint          | ~20 MB               | 512 MB+ (JVM)          | 512 MB+ (JVM)       | Varies          |
+| Schema validation         | Built-in             | Schema Registry (sep.) | Limited             | Manual          |
+| Data transformation       | Bronze→Silver→Gold   | None                   | SMTs (limited)      | Manual          |
+| Multi-destination fan-out | Native               | Single cluster         | Single cluster      | Manual          |
+| S3/GCS output             | Native               | ✗                      | Via connector       | Manual          |
+| Parquet output            | Native, at ingestion | ✗                      | Requires Spark/Glue | Manual          |
+| Requires Kafka            | No                   | Yes                    | Yes                 | Depends         |
+| Edge deployable           | Yes                  | No                     | No                  | Depends         |
+| Deployment                | Single binary        | JVM + Schema Registry  | JVM + Kafka cluster | Varies          |
 
 ### Built for the Edge
 
