@@ -10,21 +10,21 @@ Branches follow the pattern: `<module>/<type>/<description>`
 
 ### Modules
 
-| Module | Description |
-|---|---|
-| `schema` | Rust validation layer (`bastion-schema`) |
-| `core` | Rust HTTP gateway and pipeline (`bastion-core`) |
-| `dashboard` | Django admin and REST API |
-| `infra` | CI/CD, Docker, deployment config |
+| Module      | Description                                     |
+| ----------- | ----------------------------------------------- |
+| `schema`    | Rust validation layer (`bastion-schema`)        |
+| `core`      | Rust HTTP gateway and pipeline (`bastion-core`) |
+| `dashboard` | Django admin and REST API                       |
+| `infra`     | CI/CD, Docker, deployment config                |
 
 ### Types
 
-| Type | When to use |
-|---|---|
-| `feature` | New functionality |
-| `fix` | Bug fixes |
+| Type           | When to use                                |
+| -------------- | ------------------------------------------ |
+| `feature`      | New functionality                          |
+| `fix`          | Bug fixes                                  |
 | `experimental` | Proofs of concept, not guaranteed to merge |
-| `chore` | Refactors, dependency updates, cleanup |
+| `chore`        | Refactors, dependency updates, cleanup     |
 
 ### Hotfixes
 
@@ -98,4 +98,3 @@ main
 2. Open a PR into the module's `dev` branch when ready
 3. Promote `<module>/dev` → `main` once stable
 4. `hotfix/*` branches from `main` and merges back into both `main` and affected `dev` branches
-
