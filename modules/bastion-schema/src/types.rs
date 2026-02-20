@@ -11,8 +11,8 @@ pub enum FieldType {
     Float,
     Boolean,
     DateTime,
-    // Object,
-    // Array,
+    Object,
+    Array,
 }
 
 impl std::fmt::Display for FieldType {
@@ -23,8 +23,8 @@ impl std::fmt::Display for FieldType {
             FieldType::Float => "float",
             FieldType::Boolean => "boolean",
             FieldType::DateTime => "datetime",
-            // FieldType::Array => "array",
-            // FieldType::Object => "object",
+            FieldType::Array => "array",
+            FieldType::Object => "object",
         };
         write!(f, "{}", name)
     }
