@@ -1,0 +1,61 @@
+name: Issue Validator
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  validate-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Validate Issue Format
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const title = issue.title;
+            const body = issue.body;
+            const labels = issue.labels;
+            const milestone = issue.milestone;
+
+            let errors = [];
+
+            // 1. Validate Title Format: <type>: <short description>
+            // Allowed types: feat, fix, perf, chore, docs, refactor
+            const titleRegex = /^(feat|fix|perf|chore|docs|refactor): .+/;
+            if (!titleRegex.test(title)) {
+              errors.push("- Title does not follow the format `<type>: <short description>` (allowed types: feat, fix, perf, chore, docs, refactor).");
+            }
+
+            // 2. Validate Description
+            if (!body || body.trim().length < 10) {
+              errors.push("- Description is missing or too short (minimum 10 characters).");
+            }
+
+            // 3. Validate Labels
+            if (!labels || labels.length === 0) {
+              errors.push("- Issue must have at least one label.");
+            }
+
+            // 4. Validate Milestone
+            if (!milestone) {
+              errors.push("- Issue must be associated with a milestone.");
+            }
+
+            // Handle Errors
+            if (errors.length > 0) {
+              const errorMessage = `Hello @${issue.user.login}, thanks for the contribution! \n\nBefore we can process this issue, please fix the following: \n\n${errors.join('\n')}`;
+              
+              // Post a comment with the errors
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issue.number,
+                body: errorMessage
+              });
+
+              // Fail the workflow
+              core.setFailed("Issue validation failed. See comments for details.");
+            } else {
+              console.log("Validation successful!");
+            }
